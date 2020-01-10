@@ -1,10 +1,13 @@
 import React from 'react';
+import StarShips from './containers/StarShips';
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       
+      <StarShips />
+
     </div>
   );
 }
