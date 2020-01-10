@@ -1,4 +1,5 @@
 import React, { useState, memo, useEffect } from 'react';
+import ShipItem from './components/ShipItem'
 import './StarShips.css';
 
 // interface Props {
@@ -8,7 +9,7 @@ import './StarShips.css';
 
 const StarShips: React.FC = () => {
 
-  const [data, addNewItem] = useState([{name: 'nnn', model: 'mmm'}]);
+  const [data, addNewItem] = useState([{name: 'nnn', model: 'mmm', url: 'jjj'}]);
   const [name, setName] = useState('');
 
   const searchByName = (e: { target: { value: React.SetStateAction<string>; }; }) => {
@@ -24,7 +25,7 @@ const StarShips: React.FC = () => {
     fetchData();
   }, []);
 
-  useEffect(() =>{
+  useEffect(() => {
     async function fetchData(name: string) {
       const res = await fetch(`https://swapi.co/api/starships/?search=${name}`);
       const json = await res.json();
@@ -33,19 +34,14 @@ const StarShips: React.FC = () => {
     fetchData(name);
   }, [name]);
 
-  let starshipsCollection;
-  if (data !== undefined) {
-    starshipsCollection = data.map(ship => {
-      return (
-        <div className="card-item" id={ship.name}>
-          <h3>{ship.model}</h3>
-        </div>
-      )
-    });
-  }
-
-
-
+  useEffect(() => {
+    async function fetchData(name: string) {
+      const res = await fetch(`https://swapi.co/api/starships/?search=${name}`);
+      const json = await res.json();
+      await addNewItem(json.results);
+    }
+    fetchData(name);
+  }, [name]);
 
   return (
       <main className='main-block'>
@@ -53,7 +49,7 @@ const StarShips: React.FC = () => {
 
           <input className='search-input' type="text" placeholder='Title' name='title' onChange={searchByName} value={name}/>
           <div className='card-container'>
-            {starshipsCollection}
+            <ShipItem data={data} />
           </div>
 
         </div>
