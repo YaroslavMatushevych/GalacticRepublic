@@ -15,7 +15,7 @@ const ShipItem: React.FC<Props> = ({ data }) => {
   if (data !== undefined) {
     starshipsCollection = data.map(ship => {
       return (
-        <div key={ship.url} className="card-item" id={ship.name}>
+        <div key={ship.url} className="ship-item" id={ship.url}>
           <h3>{ship.model}</h3>
         </div>
       )

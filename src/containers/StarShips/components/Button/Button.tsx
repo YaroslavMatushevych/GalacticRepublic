@@ -1,14 +1,15 @@
-import React, { memo } from 'react';
+import React from 'react';
 import './Button.css';
 
 interface Props {
+  id?: string;
   text: string;
-  onClick?: () => {};
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button: React.FC<Props> = ({ text, onClick }) => {
+const Button: React.FC<Props> = ({ text, onClick, id }) => {
   return (
-    <button className='button' onClick={onClick} >
+    <button className='button' id={id} onClick={onClick} >
       {text}
     </button>
   )
