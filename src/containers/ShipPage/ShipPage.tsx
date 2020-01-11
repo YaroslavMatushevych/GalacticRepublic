@@ -1,5 +1,5 @@
-import React, { memo } from 'react';
-import './ShipPage.css';
+import React from 'react';
+import './ShipPage.module.css';
 
 interface Props {
   text: string;

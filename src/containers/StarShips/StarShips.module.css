@@ -1,0 +1,13 @@
+.paginationBtn {
+  background: black;
+  border: 3px solid white;
+  color: white;
+  margin: 20px;
+  font-size: 20px;
+}
+
+.paginationBtn:hover {
+  background: white;
+  border-color: white;
+  color: black;
+}

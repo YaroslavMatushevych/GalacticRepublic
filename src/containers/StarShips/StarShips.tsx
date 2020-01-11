@@ -1,7 +1,7 @@
 import React, { useState, memo, useEffect } from 'react';
 import ShipItem from './components/ShipItem';
-import Button from './components/Button';
-import './StarShips.css';
+import Button from '../../ui-library/components/Button';
+import styles from './StarShips.module.css';
 
 const StarShips: React.FC = () => {
 
@@ -47,18 +47,30 @@ const StarShips: React.FC = () => {
   }
 
   return (
-    <main className='main-block'>
-      <div className="main-block-content">
+    <main className={styles.mainBlock}>
+      <div className={styles.mainBlockContent}>
 
-        <input className='search-input' type="text" placeholder='Name' name='name' onChange={searchByName} value={name} />
+        <input className={styles.searchInput} type="text" placeholder='Name' name='name' onChange={searchByName} value={name} />
 
-        <div className='ship-container'>
+        <div className={styles.shipContainer}>
           <ShipItem data={data.results} />
         </div>
 
-        <Button id='previous' text='previous' onClick={setPageNumberWrapper} />
+        {data.previous !== null &&
+          <Button
+            id='previous'
+            className={styles.paginationBtn}
+            text='previous'
+            onClick={setPageNumberWrapper}
+          />}
 
-        <Button id='next' text='next' onClick={setPageNumberWrapper} />
+        {data.next !== null &&
+          <Button
+            id='next'
+            className={styles.paginationBtn}
+            text='next'
+            onClick={setPageNumberWrapper}
+          />}
 
       </div>
     </main>

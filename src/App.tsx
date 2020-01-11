@@ -1,10 +1,10 @@
 import React from 'react';
 import StarShips from './containers/StarShips';
-import './App.css';
+import styles from './App.module.css';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
+    <div className={styles.App}>
       
       <StarShips />
 

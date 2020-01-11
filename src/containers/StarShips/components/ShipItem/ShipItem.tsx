@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import './ShipItem.css';
+import './ShipItem.module.css';
 
 interface Props {
   data: {
