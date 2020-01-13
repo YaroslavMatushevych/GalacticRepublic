@@ -1,6 +1,8 @@
+// modules
 import React from 'react';
-import styles from './Button.module.css';
 import cx from 'classnames';
+// styles
+import styles from './Button.module.css';
 
 interface Props {
   id?: string;

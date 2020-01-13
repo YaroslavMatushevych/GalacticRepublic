@@ -1,5 +1,7 @@
+// modules
 import React, { memo } from 'react';
-import './ShipItem.module.css';
+// styles
+import styles from './ShipItems.module.css';
 
 interface Props {
   data: {
@@ -9,14 +11,15 @@ interface Props {
   }[];
 }
 
-const ShipItem: React.FC<Props> = ({ data }) => {
+const ShipItems: React.FC<Props> = ({ data }) => {
 
   let starshipsCollection;
   if (data !== undefined) {
     starshipsCollection = data.map(ship => {
       return (
-        <div key={ship.url} className="ship-item" id={ship.url}>
+        <div key={ship.url} className={styles.shipItem} id={ship.url}>
           <h3>{ship.model}</h3>
+          {/* <Link to={`/ship/${ship.url}`}> </Link> */}
         </div>
       )
     });
@@ -29,4 +32,4 @@ const ShipItem: React.FC<Props> = ({ data }) => {
   );
 };
 
-export default memo(ShipItem);
+export default memo(ShipItems);

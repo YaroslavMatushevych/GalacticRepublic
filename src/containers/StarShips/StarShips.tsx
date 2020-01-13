@@ -1,49 +1,56 @@
-import React, { useState, memo, useEffect } from 'react';
-import ShipItem from './components/ShipItem';
+// modules
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+// components
+import ShipItems from './components/ShipItems';
 import Button from '../../ui-library/components/Button';
+// actions
+import { itemsFetchData } from '../../actions/starShipsAction';
+// typings
+import { AppState } from '../../reducers/typings';
+// styles
 import styles from './StarShips.module.css';
+import { routerActions } from 'connected-react-router';
 
-const StarShips: React.FC = () => {
+type Props = {
+  items: {
+    next: string | null;
+    previous: string | null;
+    results: [];
+  };
+  hasErrored: boolean;
+  isLoading: boolean;
+  fetchData: (url: RequestInfo) => {};
+}
 
-  const [data, getShips] = useState({ next: 'next', previous: 'previous', results: [] });
+const StarShips: React.FC<Props & ReturnType<typeof mapStateToProps>> = ({
+  items,
+  hasErrored,
+  isLoading,
+  fetchData,
+}) => {
+
+  // useEffect(()=> {
+  //   fetchData(search);
+  // }, search))
   const [name, setName] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
 
   const searchByName = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setName(e.target.value);
+    // router.ush(`/shi/${name}`);
+    fetchData(`https://swapi.co/api/starships/?search=${name}`);
   };
 
   useEffect(() => {
-    async function fetchData() {
-      const res = await fetch(`https://swapi.co/api/starships/`);
-      const parsedData = await res.json();
-      await getShips(parsedData);
-    }
-    fetchData();
+    fetchData('https://swapi.co/api/starships/');
   }, []);
-
-  useEffect(() => {
-    async function fetchData(name: string) {
-      const res = await fetch(`https://swapi.co/api/starships/?search=${name}`);
-      const parsedData = await res.json();
-      await getShips(parsedData);
-    }
-    fetchData(name);
-  }, [name]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch(`https://swapi.co/api/starships/?page=${pageNumber}`);
-      const parsedData = await res.json();
-      await getShips(parsedData);
-    }
-    fetchData();
-  }, [pageNumber]);
 
   const setPageNumberWrapper = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLTextAreaElement;
-    (target.id === 'next' && data.next !== null) && setPageNumber(pageNumber + 1);
-    (target.id === 'previous' && data.previous !== null) && setPageNumber(pageNumber - 1);
+    (target.id === 'next' && items.next !== null) && setPageNumber(pageNumber + 1);
+    (target.id === 'previous' && items.previous !== null) && setPageNumber(pageNumber - 1);
+    fetchData(`https://swapi.co/api/starships/?page=${pageNumber}`)
   }
 
   return (
@@ -52,11 +59,15 @@ const StarShips: React.FC = () => {
 
         <input className={styles.searchInput} type="text" placeholder='Name' name='name' onChange={searchByName} value={name} />
 
-        <div className={styles.shipContainer}>
-          <ShipItem data={data.results} />
+        <div className={styles.shipsContainer}>
+          {(hasErrored) && <p>Sorry! There was an error loading the items</p>}
+
+          {(isLoading) && <p>Loading…</p>}
+
+          <ShipItems data={items.results} />
         </div>
 
-        {data.previous !== null &&
+        {items.previous !== null &&
           <Button
             id='previous'
             className={styles.paginationBtn}
@@ -64,7 +75,7 @@ const StarShips: React.FC = () => {
             onClick={setPageNumberWrapper}
           />}
 
-        {data.next !== null &&
+        {items.next !== null &&
           <Button
             id='next'
             className={styles.paginationBtn}
@@ -77,4 +88,22 @@ const StarShips: React.FC = () => {
   );
 };
 
-export default memo(StarShips);
+const mapStateToProps = (state: AppState) => {
+  return {
+    items: state.items as {
+      next: string | null;
+      previous: string | null;
+      results: [];},
+    hasErrored: state.itemsHasErrored,
+    isLoading: state.itemsIsLoading
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  // const search = 'from location';
+  return {
+    fetchData: (url: RequestInfo) => dispatch(itemsFetchData(url))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(StarShips);
