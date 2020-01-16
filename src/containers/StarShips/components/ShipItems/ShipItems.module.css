@@ -30,20 +30,17 @@
   padding: 18px 0;
 }
 
-.example-enter {
-  opacity: 0.01;
+.item-enter {
+  opacity: 0;
 }
-
-.example-enter.example-enter-active {
+.item-enter-active {
   opacity: 1;
   transition: opacity 2000ms ease-in;
 }
-
-.example-leave {
+.item-exit {
   opacity: 1;
 }
-
-.example-leave.example-leave-active {
-  opacity: 0.01;
+.item-exit-active {
+  opacity: 0;
   transition: opacity 2000ms ease-in;
 }
