@@ -1,0 +1,46 @@
+.shipItemContainer {
+  border: 1px solid gray;
+  border-radius: 10px;
+  width: 100%;
+  flex-shrink: 0;
+  flex-grow: 1;
+  margin: 8px 0;
+  transition: all 0.5s linear;
+}
+
+.shipItemContainer a {
+  text-decoration: none;
+  color: white;
+}
+
+.shipItemContainer:hover {
+  background: white;
+  border-color: white;
+  color: black;
+  transition: all 0.5s linear;
+}
+
+.shipItemContainer:hover .heading{
+  color: black;
+  transition: all 0.5s linear;
+}
+
+.heading {
+  margin: 0;
+  padding: 18px 0;
+}
+
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 2000ms ease-in;
+}
+.item-exit {
+  opacity: 1;
+}
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 2000ms ease-in;
+}

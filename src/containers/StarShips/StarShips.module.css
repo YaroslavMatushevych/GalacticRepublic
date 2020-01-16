@@ -1,0 +1,45 @@
+.mainBlock {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 80px;
+}
+
+.heading {
+  color: white;
+  font-size: 27px;
+}
+
+.searchInput {
+  border: 1px solid gray;
+  width: 170px;
+  padding: 6px;
+  border-radius: 10px;
+  box-shadow: none;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.shipsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.paginationBtn {
+  background: black;
+  border: 3px solid white;
+  color: white;
+  margin: 20px;
+  font-size: 20px;
+}
+
+.paginationBtn:hover {
+  background: white;
+  border-color: white;
+  color: black;
+}
+
+.shipsContainer {
+  color: white;
+}
