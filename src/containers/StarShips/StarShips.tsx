@@ -41,11 +41,16 @@ const StarShips: React.FC<Props & ReturnType<typeof mapStateToProps>> = ({
     fetchData('https://swapi.co/api/starships/');
   }, []);
 
+
+  useEffect(() => {
+    fetchData(`https://swapi.co/api/starships/?page=${pageNumber}`)
+  }, [pageNumber]);
+
+  console.log(items);
   const setPageNumberWrapper = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLTextAreaElement;
     (target.id === 'next' && items.next !== null) && setPageNumber(pageNumber + 1);
     (target.id === 'previous' && items.previous !== null) && setPageNumber(pageNumber - 1);
-    fetchData(`https://swapi.co/api/starships/?page=${pageNumber}`)
   }
 
   return (
