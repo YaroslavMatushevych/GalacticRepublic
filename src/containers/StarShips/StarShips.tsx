@@ -46,7 +46,6 @@ const StarShips: React.FC<Props & ReturnType<typeof mapStateToProps>> = memo(({
     fetchData('https://swapi.co/api/starships/');
   }, [fetchData]);
 
-
   useEffect(() => {
     fetchData(`https://swapi.co/api/starships/?page=${pageNumber}`)
   }, [pageNumber, fetchData]);

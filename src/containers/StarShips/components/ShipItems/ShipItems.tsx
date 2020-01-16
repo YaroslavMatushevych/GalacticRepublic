@@ -52,7 +52,7 @@ const ShipItems: React.FC<Props> = ({ data }) => {
               }
             }}
           >
-            <h3 className={styles.heading}>{ship.model}</h3>
+            <h3 className={styles.heading}>{ship.name}</h3>
           </Link>
         </div>
       )
