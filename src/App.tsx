@@ -14,9 +14,12 @@ const App: React.FC = () => {
     <Router>
       <div className={styles.App}>
 
-        <StarShips />
+        <Switch>
+          <Route exact path="/" component={StarShips} />
 
-        <ShipPage />
+          <Route path="/shipPage" component={ShipPage} />
+        </Switch>
+
 
       </div>
     </Router>

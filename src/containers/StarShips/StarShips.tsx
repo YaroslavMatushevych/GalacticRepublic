@@ -10,7 +10,6 @@ import { itemsFetchData } from '../../actions/starShipsAction';
 import { AppState } from '../../reducers/typings';
 // styles
 import styles from './StarShips.module.css';
-import { routerActions } from 'connected-react-router';
 
 type Props = {
   items: {

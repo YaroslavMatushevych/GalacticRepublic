@@ -1,28 +1,28 @@
 // modules
 import React from 'react';
+import { useHistory } from "react-router-dom";
 // styles
 import './ShipPage.module.css';
 
-// type Props = {
-//   text: string;
-//   onClick?: () => {};
-// }
+type Props = {
+  text: string;
+  onClick?: () => {};
+}
 
-const ShipPage: React.FC = () => {
+const ShipPage = (props: any) => {
+  const history = useHistory()
+  const { model } = props.location.state
+
   return (
     <div>
-
+      <h2 className="icon list arrow left"
+          onClick={() => {
+          history.goBack()
+        }}>
+        {model}
+      </h2>
     </div>
   )
 }
-// const mapStateToProps = (state: AppState, ownProps: {location}) => {
-//   const { location } = ownProps;
-//   const id = location.slit('shi/')[1];
-
-//   return {
-//   shi: state.shis.find(item => item.url = id);
-//   };
-// };
 
 export default ShipPage;
-// export default connect(mapStateToProps)withRouter(ShipPage);
