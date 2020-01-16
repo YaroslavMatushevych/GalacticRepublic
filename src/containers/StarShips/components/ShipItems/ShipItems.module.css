@@ -5,6 +5,7 @@
   flex-shrink: 0;
   flex-grow: 1;
   margin: 8px 0;
+  transition: all 0.5s linear;
 }
 
 .shipItemContainer a {
@@ -16,10 +17,12 @@
   background: white;
   border-color: white;
   color: black;
+  transition: all 0.5s linear;
 }
 
 .shipItemContainer:hover .heading{
   color: black;
+  transition: all 0.5s linear;
 }
 
 .heading {
