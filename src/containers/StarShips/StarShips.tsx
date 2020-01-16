@@ -34,13 +34,15 @@ const StarShips: React.FC<Props & ReturnType<typeof mapStateToProps>> = ({
 
   const searchByName = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setName(e.target.value);
-    fetchData(`https://swapi.co/api/starships/?search=${name}`);
   };
 
   useEffect(() => {
     fetchData('https://swapi.co/api/starships/');
   }, []);
 
+  useEffect(() => {
+    fetchData(`https://swapi.co/api/starships/?search=${name}`);
+  }, [name]);
 
   useEffect(() => {
     fetchData(`https://swapi.co/api/starships/?page=${pageNumber}`)
@@ -55,7 +57,6 @@ const StarShips: React.FC<Props & ReturnType<typeof mapStateToProps>> = ({
 
   return (
     <main className={styles.mainBlock}>
-
       <h2 className={styles.heading}>List of our Imperial Space Fleet</h2>
 
       <input 
