@@ -1,6 +1,26 @@
 .shipItemContainer {
   color: white;
   padding-top: 75px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.ShipItemCard {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 5px solid white;
+  border-radius: 30px;
+  background-color: black;
+}
+
+.shipDescription {
+  flex: 1 0 100%;
+  font-size: 25px;
+  margin: 14px 0;
+  font-weight: 500;
 }
 
 .goBackBtn {
@@ -15,4 +35,8 @@
   background: white;
   border-color: white;
   color: black;
+}
+
+.heading {
+  font-size: 27px;
 }

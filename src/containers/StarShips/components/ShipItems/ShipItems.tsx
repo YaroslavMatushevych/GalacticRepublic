@@ -35,20 +35,20 @@ const ShipItems: React.FC<Props> = ({ data }) => {
             to={{
               pathname: "/shipPage",
               state: {
-                name: ship.name,
-                model: ship.model,
-                manufacturer: ship.manufacturer,
-                cost_in_credits: ship.cost_in_credits,
-                length: ship.length,
-                max_atmosphering_speed: ship.max_atmosphering_speed,
-                crew: ship.crew,
-                cargo_capacity: ship.cargo_capacity,
-                consumables: ship.consumables,
-                hyperdrive_rating: ship.hyperdrive_rating,
+                Name: ship.name,
+                Model: ship.model,
+                Manufacturer: ship.manufacturer,
+                CostInCredits: ship.cost_in_credits,
+                Length: ship.length,
+                MaxAtmospheringSpeed: ship.max_atmosphering_speed,
+                Crew: ship.crew,
+                CargoCapacity: ship.cargo_capacity,
+                Consumables: ship.consumables,
+                HyperdriveRating: ship.hyperdrive_rating,
                 MGLT: ship.MGLT,
-                starship_class: ship.starship_class,
-                created: ship.created,
-                edited: ship.edited,
+                StarshipClass: ship.starship_class,
+                Created: ship.created,
+                Edited: ship.edited,
               }
             }}
           >

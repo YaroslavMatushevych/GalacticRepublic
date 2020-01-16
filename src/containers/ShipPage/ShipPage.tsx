@@ -9,27 +9,27 @@ import styles from './ShipPage.module.css';
 type Props = {
   location: {
     state: {
-      name: string,
-      model: string,
-      manufacturer: string,
-      cost_in_credits: string,
-      length: string,
-      max_atmosphering_speed: string,
-      crew: string,
-      cargo_capacity: string,
-      consumables: string,
-      hyperdrive_rating: string,
+      Name: string,
+      Model: string,
+      Manufacturer: string,
+      CostInCredits: string,
+      Length: string,
+      MaxAtmospheringSpeed: string,
+      Crew: string,
+      CargoCapacity: string,
+      Consumables: string,
+      HyperdriveRating: string,
       MGLT: string,
-      starship_class: string,
-      created: string,
-      edited: string,
+      StarshipClass: string,
+      Created: string,
+      Edited: string,
     }
   };
 }
 
 const ShipPage: React.FC<Props> = ({ location }) => {
   const history = useHistory();
-  const { name } = location.state;
+  const { Name } = location.state;
 
   const descriptionItems = Object.entries(location.state).map((descItem, index) => {
     return (
@@ -43,10 +43,12 @@ const ShipPage: React.FC<Props> = ({ location }) => {
   return (
     <div className={styles.shipItemContainer}>
       <h2 className={styles.heading} >
-        {name}
+        StarShip {Name}
       </h2>
 
-      {descriptionItems}
+      <div className={styles.ShipItemCard}>
+        {descriptionItems}
+      </div>
 
       <Button
         text='Go Back'
