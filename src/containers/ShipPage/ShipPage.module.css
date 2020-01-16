@@ -1,0 +1,17 @@
+.shipItemContainer {
+  color: white;
+}
+
+.goBackBtn {
+  background: black;
+  border: 3px solid white;
+  color: white;
+  margin: 20px;
+  font-size: 20px;
+}
+
+.goBackBtn:hover {
+  background: white;
+  border-color: white;
+  color: black;
+}

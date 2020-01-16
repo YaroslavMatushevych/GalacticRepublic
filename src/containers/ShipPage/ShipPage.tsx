@@ -1,26 +1,60 @@
 // modules
 import React from 'react';
 import { useHistory } from "react-router-dom";
+// components
+import Button from '../../ui-library/components/Button';
 // styles
-import './ShipPage.module.css';
+import styles from './ShipPage.module.css';
 
 type Props = {
-  text: string;
-  onClick?: () => {};
+  location: {
+    state: {
+      name: string,
+      model: string,
+      manufacturer: string,
+      cost_in_credits: string,
+      length: string,
+      max_atmosphering_speed: string,
+      crew: string,
+      cargo_capacity: string,
+      consumables: string,
+      hyperdrive_rating: string,
+      MGLT: string,
+      starship_class: string,
+      created: string,
+      edited: string,
+    }
+  };
 }
 
-const ShipPage = (props: any) => {
-  const history = useHistory()
-  const { model } = props.location.state
+const ShipPage: React.FC<Props> = ({ location }) => {
+  const history = useHistory();
+  const { name } = location.state;
+
+  const descriptionItems = Object.keys(location.state).map((descItem: string, index) => {
+    return (
+      <p className={styles.shipDescription} key={index}>
+        {descItem}
+      </p>
+    )
+  });
+
 
   return (
-    <div>
-      <h2 className="icon list arrow left"
-          onClick={() => {
-          history.goBack()
-        }}>
-        {model}
+    <div className={styles.shipItemContainer}>
+      <h2 className={styles.heading} >
+        {name}
       </h2>
+
+      {descriptionItems}
+
+      <Button
+        text='Go Back'
+        className={styles.goBackBtn}
+        onClick={() => {
+          history.goBack()
+        }}
+      />
     </div>
   )
 }

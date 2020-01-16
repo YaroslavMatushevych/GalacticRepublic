@@ -29,15 +29,11 @@ const StarShips: React.FC<Props & ReturnType<typeof mapStateToProps>> = ({
   fetchData,
 }) => {
 
-  // useEffect(()=> {
-  //   fetchData(search);
-  // }, search))
   const [name, setName] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
 
   const searchByName = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setName(e.target.value);
-    // router.ush(`/shi/${name}`);
     fetchData(`https://swapi.co/api/starships/?search=${name}`);
   };
 
@@ -99,7 +95,6 @@ const mapStateToProps = (state: AppState) => {
 };
 
 const mapDispatchToProps = (dispatch: any) => {
-  // const search = 'from location';
   return {
     fetchData: (url: RequestInfo) => dispatch(itemsFetchData(url))
   };
