@@ -31,10 +31,10 @@ const ShipPage: React.FC<Props> = ({ location }) => {
   const history = useHistory();
   const { name } = location.state;
 
-  const descriptionItems = Object.keys(location.state).map((descItem: string, index) => {
+  const descriptionItems = Object.entries(location.state).map((descItem, index) => {
     return (
       <p className={styles.shipDescription} key={index}>
-        {descItem}
+        {`${descItem[0]}: ${descItem[1]}`}
       </p>
     )
   });
