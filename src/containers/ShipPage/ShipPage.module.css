@@ -2,6 +2,7 @@
   color: white;
   padding-top: 75px;
   width: 60%;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -39,4 +40,14 @@
 
 .heading {
   font-size: 27px;
+}
+
+@media screen and (max-width: 800px) {
+  .shipItemContainer {
+    width: 80%;
+  }
+
+  .shipDescription {
+    font-size: 20px;
+  }
 }
