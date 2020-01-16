@@ -75,7 +75,7 @@ const StarShips: React.FC<Props & ReturnType<typeof mapStateToProps>> = ({
         <ShipItems data={items.results} />
       </div>
 
-      {items.previous !== null &&
+      {items.previous &&
         <Button
           id='previous'
           className={styles.paginationBtn}
@@ -83,7 +83,7 @@ const StarShips: React.FC<Props & ReturnType<typeof mapStateToProps>> = ({
           onClick={setPageNumberWrapper}
         />}
 
-      {items.next !== null &&
+      {items.next &&
         <Button
           id='next'
           className={styles.paginationBtn}
