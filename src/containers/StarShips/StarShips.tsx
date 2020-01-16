@@ -72,11 +72,8 @@ const StarShips: React.FC<Props & ReturnType<typeof mapStateToProps>> = memo(({
       />
 
       <div className={styles.shipsContainer}>
-        {(hasErrored) && <p>Sorry! There was an error loading the items</p>}
-
-        {(isLoading) && <p>Loading…</p>}
-
-        <ShipItems data={items.results} />
+        {(hasErrored) ? <p>Sorry! There was an error loading the items</p> : 
+        (isLoading) ? <p>Loading…</p> : <ShipItems data={items.results} />}
       </div>
 
       {items.previous &&
