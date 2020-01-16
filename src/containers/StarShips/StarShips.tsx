@@ -50,35 +50,41 @@ const StarShips: React.FC<Props & ReturnType<typeof mapStateToProps>> = ({
 
   return (
     <main className={styles.mainBlock}>
-      <div className={styles.mainBlockContent}>
 
-        <input className={styles.searchInput} type="text" placeholder='Name' name='name' onChange={searchByName} value={name} />
+      <h2 className={styles.heading}>List of our Imperial Space Fleet</h2>
 
-        <div className={styles.shipsContainer}>
-          {(hasErrored) && <p>Sorry! There was an error loading the items</p>}
+      <input 
+        className={styles.searchInput} 
+        type="text" 
+        placeholder='Search By Name' 
+        name='name' 
+        onChange={searchByName} 
+        value={name} 
+      />
 
-          {(isLoading) && <p>Loading…</p>}
+      <div className={styles.shipsContainer}>
+        {(hasErrored) && <p>Sorry! There was an error loading the items</p>}
 
-          <ShipItems data={items.results} />
-        </div>
+        {(isLoading) && <p>Loading…</p>}
 
-        {items.previous !== null &&
-          <Button
-            id='previous'
-            className={styles.paginationBtn}
-            text='previous'
-            onClick={setPageNumberWrapper}
-          />}
-
-        {items.next !== null &&
-          <Button
-            id='next'
-            className={styles.paginationBtn}
-            text='next'
-            onClick={setPageNumberWrapper}
-          />}
-
+        <ShipItems data={items.results} />
       </div>
+
+      {items.previous !== null &&
+        <Button
+          id='previous'
+          className={styles.paginationBtn}
+          text='previous'
+          onClick={setPageNumberWrapper}
+        />}
+
+      {items.next !== null &&
+        <Button
+          id='next'
+          className={styles.paginationBtn}
+          text='next'
+          onClick={setPageNumberWrapper}
+        />}
     </main>
   );
 };
@@ -88,7 +94,8 @@ const mapStateToProps = (state: AppState) => {
     items: state.items as {
       next: string | null;
       previous: string | null;
-      results: [];},
+      results: [];
+    },
     hasErrored: state.itemsHasErrored,
     isLoading: state.itemsIsLoading
   };

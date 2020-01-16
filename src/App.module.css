@@ -4,3 +4,20 @@
   background-size: cover;
   min-height: 100vh;
 }
+
+.navigationBar {
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: black;
+  position: fixed;
+  width: 100%;
+}
+
+.navigationBar a {
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 700;
+}

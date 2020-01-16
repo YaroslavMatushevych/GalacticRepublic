@@ -1,4 +1,28 @@
+.shipItemContainer {
+  border: 1px solid gray;
+  border-radius: 10px;
+  width: 100%;
+  flex-shrink: 0;
+  flex-grow: 1;
+  margin: 8px 0;
+}
+
 .shipItemContainer a {
   text-decoration: none;
   color: white;
+}
+
+.shipItemContainer:hover {
+  background: white;
+  border-color: white;
+  color: black;
+}
+
+.shipItemContainer:hover .heading{
+  color: black;
+}
+
+.heading {
+  margin: 0;
+  padding: 18px 0;
 }
